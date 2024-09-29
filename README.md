@@ -5,7 +5,7 @@
 ### 1 - Matériel requis
 ### 2 - Installation de Proxmox
 ### 3 - Configuration de Proxmox
-### 4 - Installation d'une VM Ubuntu
+### 4 - Installation d'un conteneur NextCloud (Stockage de fichiers)
 ### 5 - Installation d'une VM PfSense
 ### 6 - Installation de Jellyfin (Serveur Multimédia)
   
@@ -145,6 +145,88 @@ Au redémarrage du Mini-PC, cet écran apparaîtra :
 
 
 ### Bravo ! Vous pouvez dorénavant gérer votre Mini-PC directement depuis un navigateur internet
+  
+  
+## 3 - Configuration de Proxmox
+
+### Interface Graphique
+
+Comme expliqué précédemment, nous n'avons plus besoin d'accéder "physiquement" au Mini-PC, celui-ci a juste besoin d'être alimenté et d'être relié au réseau domestique (Ethernet de préférence).
+
+Afin d'accéder à l'interface graphique de Proxmox, il faut entrer l'adresse IP attribuée au Mini-PC à l'étape précédente sur un navigateur internet d'un ordinateur relié également au réseau domestique : 
+
+![2024-09-29 12_23_18-](https://github.com/user-attachments/assets/8cebd7d9-da29-44fc-88b5-9418d3505659)
+
+Une page avec un message indiquant que la connexion n'est pas privée apparaîtra, ce qui est normal car nous n'avons pas spécifié de certificat de sécurité.  
+  
+Dans notre cas, cela importe peu car les deux postes sont connectés sur notre réseau domestique, nous pouvons donc cliquer sur `Paramètres avancés`, puis sur `Continuer vers le site 192.168.1.X (dangereux)`.  
+
+![2024-09-29 12_24_25-](https://github.com/user-attachments/assets/3e59d21f-093a-422e-8058-3ec6af86668e)
+
+Nous arrivons donc sur la page de Proxmox, et un pop-up nous demande de nous connecter ; Pour ce faire, nous allons entrer les informations suivantes : 
+ - `User name` : `root`
+ - `Password` : Celui définit lors de l'installation de Proxmox
+ - `Realm` : Laisser sur `Linux PAM standard authentication`
+ - `Language` : A votre convenance (*La langue anglaise sera conservée pour la suite de ce tuto*)
+
+![2024-09-29 12_25_06-](https://github.com/user-attachments/assets/9aae7786-d094-4505-85ac-d37d58f9c8e3)
+
+Une fois validé, un pop-up apparaîtra pour nous indiquer que nous n'avons pas de souscription valide.  
+  
+Nous pouvons ignorer ce message et passer à la suite en apuuyant sur `OK`.  
+
+![2024-09-29 12_25_43-toto - Proxmox Virtual Environment](https://github.com/user-attachments/assets/a6fe7403-6d7d-46e2-9c85-6df64e7a9198)
+
+**Cette fois-çi, c'est bon, nous sommes sur l'interface principale de Proxmox !**
+
+![2024-09-29 12_29_00-](https://github.com/user-attachments/assets/eb6a8a3e-f385-4298-9289-74d10e5177ab)
+
+
+### Mises à jour
+
+Comme tout système, il est important que Proxmox reste à jour.  
+Nous allons donc cliquer sur le noeud situé sur la gauche de l'écran, puis cliquer sur `Updates`
+
+![2024-09-29 12_29_58-](https://github.com/user-attachments/assets/3959cd66-ce0c-4dd3-b8a1-3ce6c848d18f)
+
+
+Nous allons maintenant cliquer sur `Refresh`, et le même pop-up concernant la souscription apparaîtra, il suffit de l'ignorer et de cliquer sur `OK`
+
+![2024-09-29 12_30_50-](https://github.com/user-attachments/assets/d3d80156-7bb8-48e4-b9c2-79049a93adf2)
+
+Une fenêtre `Task Viewer` apparaîtra alors et indiquera une erreur, ce qui reste sans conséquences car, quand nous fermerons cette fenêtre, nous remarquerons que la liste des paquets à mettre à jour aura bien été téléchargée.  
+
+![2024-09-29 12_31_20-toto - Proxmox Virtual Environment](https://github.com/user-attachments/assets/76bd3e8e-a8d7-485b-bef0-5d79e80a751a)
+
+
+Il suffira donc de cliquer sur `Upgrade` afin d'effectuer les différentes mises à jour disponibles
+
+![2024-09-29 12_29_58-](https://github.com/user-attachments/assets/83a22da2-bb01-4617-abc5-11d368427b3d)
+
+**Bravo, Proxmox est à jour !**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
